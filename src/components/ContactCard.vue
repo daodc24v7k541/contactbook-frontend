@@ -33,5 +33,16 @@ export default {
       <i v-if="contact.favorite" class="fas fa-check"></i>
       <i v-else class="fas fa-times"></i>
     </div>
+
+
+    <div class="p-1">
+  <strong>Sở thích: </strong>
+  <span v-if="contact.hobbies && contact.hobbies.length">
+    {{ contact.hobbies.join(", ") }}
+  </span>
+  <span v-else>
+    Không có sở thích
+  </span>
+</div>
   </div>
 </template>

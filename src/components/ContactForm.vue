@@ -55,6 +55,62 @@
         <strong>Liên hệ yêu thích</strong>
       </label>
     </div>
+    
+    <div class="form-group form-check mt-3">
+  <input
+    type="checkbox"
+    class="form-check-input"
+    v-model="contactLocal.hasHobby"
+  />
+
+  <label class="form-check-label">
+    <strong>Sở thích</strong>
+  </label>
+</div>
+
+<div v-if="contactLocal.hasHobby" class="form-group mt-2">
+  <label><strong>Sở thích</strong></label>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="Giải trí"
+      v-model="contactLocal.hobbies"
+    />
+    <label class="form-check-label">Giải trí</label>
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="Khoa học"
+      v-model="contactLocal.hobbies"
+    />
+    <label class="form-check-label">Khoa học</label>
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="Thể thao"
+      v-model="contactLocal.hobbies"
+    />
+    <label class="form-check-label">Thể thao</label>
+  </div>
+
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="Âm nhạc"
+      v-model="contactLocal.hobbies"
+    />
+    <label class="form-check-label">Âm nhạc</label>
+  </div>
+</div>
 
     <div class="form-group">
       <button class="btn btn-primary">Lưu</button>
@@ -118,11 +174,15 @@ export default {
         ),
     });
 
-    return {
-      // Không chỉnh sửa trực tiếp props
-      contactLocal: this.contact,
-      contactFormSchema,
-    };
+return {
+  contactLocal: {
+    ...this.contact,
+    hobbies: this.contact.hobbies || [],
+    hasHobby:
+      this.contact.hobbies && this.contact.hobbies.length > 0,
+  },
+  contactFormSchema,
+};
   },
 
   methods: {
